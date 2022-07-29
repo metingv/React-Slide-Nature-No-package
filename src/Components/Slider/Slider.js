@@ -7,12 +7,21 @@ export default function Slider() {
 
     const [slideIndex, setSlideIndex] = useState(1)
    
-    // AUTOMATIC SLIDE 
-    useEffect(() => {
+      // AUTOMATIC SLIDE 
+      useEffect(() => {
+        console.log(slideIndex)
+        console.log(dataSlider.length)
         setInterval(() => {
-            setSlideIndex(prevCount => prevCount + 1);
+            if(  slideIndex < dataSlider.length){
+                setSlideIndex(slideIndex + 1);
+               // wrong setSlideIndex(prevCount => prevCount + 1);
+            }
+            else{
+                setSlideIndex(1);
+            }
+           
         }, 4000);
-      }, []);
+      }, [slideIndex]);
 
     // dataSlider.length = 4
     const nextSlide = () => {
