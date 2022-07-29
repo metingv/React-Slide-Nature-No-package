@@ -11,7 +11,7 @@ export default function Slider() {
       useEffect(() => {
         console.log(slideIndex)
         console.log(dataSlider.length)
-        setInterval(() => {
+        const interval =  setInterval(() => {
             if(  slideIndex < dataSlider.length){
                 setSlideIndex(slideIndex + 1);
                // wrong setSlideIndex(prevCount => prevCount + 1);
@@ -21,6 +21,8 @@ export default function Slider() {
             }
            
         }, 4000);
+             // mustable because // her defe clear etmesi vacibibdir her interval sonrasi clear edib yeniden interval baslayacaq
+             return () => clearInterval(interval);
       }, [slideIndex]);
 
     // dataSlider.length = 4
